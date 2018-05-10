@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Hermes</h1>
+    <h1 class="text-center">Hermes</h1>
     <router-view></router-view>
   </div>
 </template>
@@ -21,12 +21,16 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
 
-h1, h2 {
+.text-center{
+  text-align: center;
+}
+
+/* h1, h2 {
   font-weight: normal;
 }
 
@@ -42,5 +46,5 @@ li {
 
 a {
   color: #42b983;
-}
+} */
 </style>
