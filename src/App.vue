@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <h1 class="text-center">Hermes</h1>
+    <audio src="static/jazz.mp3"  autoplay loop>
+      <p>Seu navegador não suporta o elemento audio </p>
+    </audio>
     <router-view></router-view>
   </div>
 </template>
