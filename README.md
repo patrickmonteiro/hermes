@@ -1,6 +1,6 @@
 # hermes
 
-> Memory card game
+> :black_joker: Memory card game
 
 ## Build Setup
 
