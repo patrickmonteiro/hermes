@@ -1,51 +1,77 @@
 <template>
 <div>
-
-  <h2 class="text-center">Card Vue</h2>
-  <div class="card-group">
-    <div class="card" v-for="card in cards" :key="card.name" @click="exibeCard(card)" :class="card.classCard" @dblclick="ocultaCard(card)">
+    <div class="card" :class="classCard" @dblclick="hideCard()">
       <div class="card-content">
-        <img :src="card.imgFront" style="width:220px; position: absolute;" class="img-front" alt="">
-        <img :src="card.imgBack" style="width:220px; position: absolute;" class="img-back" alt="" :class="card.classCardBack">
+        <img :src="imgFront" style="width:220px; position: absolute;" class="img-front" alt="">
+        <img :src="imgBack" style="width:220px; position: absolute;" class="img-back" alt="" :class="classCardBack">
       </div>
     </div>
-    <!-- <div class="card" v-for="card in 12" :key="card">
-      <div class="card-content">
-        <img src="/static/hermes_icon.png" style="width:50px" alt="">
-      </div>
-    </div> -->
-  </div>
 </div>
 </template>
 
 <script>
 export default {
   name: 'card',
-  data () {
-    return {
-      cards:[{
-        name: 'mago-negro',
-        classCard: 'card-not-active',
-        classCardBack: '.img-back-not-active',
-        imgFront: "/static/mago-negro.jpg" ,
-        imgBack: "/static/card_back.png" ,
-      },{
-        name: 'dragao-branco',
-        classCard: 'card-not-active',
-        classCardBack: '.img-back-not-active',
-        imgFront: "/static/dragao-branco.jpg" ,
-        imgBack: "/static/card_back.png" ,
-      }],
+  props: {
+    // cards: {
+    //   type: Array,
+    //   required: true,
+    // },
+    classCardBoolean:{
+      type: Boolean,
+      default: false,
+    },
+    classCardBackBoolean: {
+      type: Boolean,
+      default: false,
+    },
+    imgFront: {
+      type: String,
+      required: true,
+    },
+    imgBack: {
+      type: String,
+      required: true,
     }
   },
+  data () {
+    return {
+      // classCardMutable: this.classCard,
+      // classCardBackMutable: this.classCardBack
+      classCard: 'card-not-active',
+      classCardBack: '.img-back-not-active',
+      // cards:[{
+      //   name: 'mago-negro',
+      //   classCard: 'card-not-active',
+      //   classCardBack: '.img-back-not-active',
+      //   imgFront: "/static/mago-negro.jpg" ,
+      //   imgBack: "/static/card_back.png" ,
+      // },{
+      //   name: 'dragao-branco',
+      //   classCard: 'card-not-active',
+      //   classCardBack: '.img-back-not-active',
+      //   imgFront: "/static/dragao-branco.jpg" ,
+      //   imgBack: "/static/card_back.png" ,
+      // }],
+    }
+  },
+  watch: {
+  classCardBoolean () {
+    if (this.classCardBoolean) {
+      this.showCard()
+    } else {
+      this.hideCard()
+    }
+  },
+},
   methods: {
-    exibeCard(card){
-      card.classCard = 'card-active';
-      card.classCardBack = 'img-back-active';
+    showCard(){
+      this.classCard = 'card-active';
+      this.classCardBack = 'img-back-active';
     },
-    ocultaCard(card){
-      card.classCard = 'card-not-active';
-      card.classCardBack = 'img-back-not-active';
+    hideCard(){
+      this.classCard = 'card-not-active';
+      this.classCardBack = 'img-back-not-active';
     }
   }
 }
@@ -66,6 +92,7 @@ justify-content: center;
   display: flex;
   /* align-items: center; */
   margin-left: 5px;
+  z-index: 3;
 }
 
 .card-active{
