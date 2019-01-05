@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="card" :class="classCard" @dblclick="hideCard()">
+    <div class="card"  :class="classCard" @dblclick="hideCard()">
       <div class="card-content">
         <img :src="imgFront" style="width:220px; position: absolute;" class="img-front" alt="">
         <img :src="imgBack" style="width:220px; position: absolute;" class="img-back" alt="" :class="classCardBack">
